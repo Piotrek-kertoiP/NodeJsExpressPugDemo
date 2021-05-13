@@ -1,0 +1,7 @@
+extends layout
+block content
+	h1 Deleting
+	form(method="post" action="/delete/"+carId)
+		input(type="submit" value="Delete")
+		if message!=''
+			p #{message}

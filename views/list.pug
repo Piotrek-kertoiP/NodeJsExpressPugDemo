@@ -1,0 +1,24 @@
+extends layout
+block content
+	h1 Cars list
+	table
+		tr
+			th Number
+			th Make
+			th Model
+			th Year
+			th Cubic capacity
+			th Power
+			th Delete
+		each car, index in carsList
+			tr
+				td=index+1
+				td=car.make
+				td=car.model
+				td=car.year
+				td=car.cubic_capacity
+				td=car.power
+				td
+					a(href="/edit/"+car.id) edit
+				td
+					a(href="/delete/"+car.id) delete

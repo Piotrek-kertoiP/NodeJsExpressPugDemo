@@ -1,0 +1,27 @@
+extends layout
+block content
+	h1 Edit
+	form(method="post" action="/edit/"+id)
+		label Make
+		br
+		input(type="text" name="make" value=make)
+		br
+		label Model
+		br
+		input(type="text" name="model" value=model)
+		br
+		label Year
+		br
+		input(type="number" name="year" value=year)
+		br
+		label Cubic capacity
+		br
+		input(type="number" name="cubic_capacity" value=cubic_capacity)
+		br
+		label Power
+		br
+		input(type="number" name="power" value=power)
+		br
+		input(type="submit" value="Submit")
+		if message!=''
+			p #{message}

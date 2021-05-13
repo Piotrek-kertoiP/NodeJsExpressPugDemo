@@ -1,0 +1,42 @@
+# run MySQL instance locally
+docker pull mysql:5.7
+
+docker run \
+    --name mysql-docker \
+    -p 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=mysql \
+    -e MYSQL_USER=user \
+    -e MYSQL_PASSWORD=userpass \
+    -e MYSQL_DATABASE=userdb \
+    -d mysql:5.7
+
+docker exec -it mysql-docker /bin/bash
+    #inside the container do the following:
+    mysql -u user -p
+    #type in password: userpass
+    show databases;
+    use userdb;
+    show tables;
+    #empty set so create first table
+    CREATE TABLE IF NOT EXISTS cars (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        make VARCHAR(255) NOT NULL,
+        model VARCHAR(255) NOT NULL,
+        year INT NOT NULL,
+        cubic_capacity INT NOT NULL,
+        power INT NOT NULL
+    )  ENGINE=INNODB;
+    show tables;
+    #table cars should now appear
+    #exit container's mysql client
+    exit
+    #exit container's bash
+    exit
+
+#run the JS app
+npm install express
+npm install pug
+npm install mysql
+node cars.js
+
+#open localhost:3000
